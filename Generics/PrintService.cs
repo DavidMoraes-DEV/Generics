@@ -2,14 +2,14 @@
 
 namespace Generics
 {
-    class PrintService //Solução sem Generics
+    class PrintService<T> //Essa solução com Generics faz a classe ficar parâmetrizado com o tipo "T", ou seja, um tipo genérico específico ao qual chamei de "T"
     {
-        private int[] Values = new int[10]; 
+        private T[] Values = new T[10]; //Aqui agora será do tipo "T" e não um tipo específico como antes(ver commit anteriores)
         private int Count = 0;
 
-        public void AddValue(int value)
+        public void AddValue(T value) //Aqui também será do tipo T
         {
-            if (Count == 10) //"Programação defensiva"
+            if (Count == 10)
             {
                 throw new InvalidOperationException("PrintService is full");
             }
@@ -18,9 +18,9 @@ namespace Generics
             Count++;
         }
 
-        public int First() 
+        public T First() //Tipo T
         {
-            if (Count == 0) //"Programação defensiva"
+            if (Count == 0)
             {
                 throw new InvalidOperationException("PrintService is empty");
             }

@@ -25,20 +25,24 @@ namespace Generics
             [10, 8, 23]
             First: 10
 
-            SOLUÇÃO EXEMPLO SEM UTILIZAR GENERICS:
+            * SOLUÇÃO EXEMPLO COM GENERICS:
             */
 
-            PrintService printService = new PrintService(); 
+            PrintService<string> printService = new PrintService<string>(); //Agora utilizando a classe parâmetrizada com um tipo genérico podemos escolher o tipo que precisamos usar nesse caso colocando seu tipo específico entre "<>" para informar qual será seu tipo nesse momento.
 
-            PrintService printService1 = new PrintService();
+            PrintService<int> printService1 = new PrintService<int>(); //E para utilizar a mesma classe com um tipo específico diferente não é necessário criar uma nova classe com o tipo específico ou alterar nada na classe existente, apenas é necessário declarar o tipo desejado na frente do nome da classe quando for declara-la novamente.
 
             Console.Write("How many value? ");
             int n = int.Parse(Console.ReadLine());
             for (int i = 0; i < n; i++)
             {
-                int x = int.Parse(Console.ReadLine());
+                string x = Console.ReadLine();
                 printService.AddValue(x);
             }
+
+            /*int a = (int)printService.First(); //Agora o Tipe Safity funciona e não deixa ocorrer aquele erro do object ao qual o compilador não consegue identificar a incompatibilidade antes de executar o código.
+            int b = a + 2;
+            Console.WriteLine(b);*/
 
             printService.Print();
             Console.WriteLine("First: " + printService.First());
